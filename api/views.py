@@ -12,12 +12,6 @@ def getTopMovies(request):
         return JsonResponse(json.loads(getRequest('https://api.themoviedb.org/3/movie/popular', queryString).text))
 
 
-def getTrendingAllWeek(request):
-    if request.method == 'GET':
-        queryString = {"api_key": key}
-        return JsonResponse(json.loads(getRequest('https://api.themoviedb.org/3/trending/all/week', queryString).text))
-
-
 def getTrendingAllDay(request):
     if request.method == 'GET':
         queryString = {"api_key": key}
@@ -28,6 +22,12 @@ def getTopRated(request):
     if request.method == "GET":
         queryString = {"api_key": key, 'language': 'en-US', 'page': 1}
         return JsonResponse(json.loads(getRequest('https://api.themoviedb.org/3/movie/top_rated', queryString).text))
+
+
+def getTrendingAllWeek(request):
+    if request.method == 'GET':
+        queryString = {"api_key": key}
+        return JsonResponse(json.loads(getRequest('https://api.themoviedb.org/3/trending/all/week', queryString).text))
 
 
 def getLatestMovies(request):
