@@ -50,3 +50,16 @@ def getItemDetail(request):
         movieId = json.loads(request.body.decode('utf-8'))
         return JsonResponse(json.loads(
             getMovieDetail('https://api.themoviedb.org/3/movie/' + str(movieId['movieId']), queryString).text))
+
+
+def getSimilarMovie(request):
+    if request.method == "POST":
+        params = json.loads(request.body.decode('utf-8'))
+        queryString = {"api_key": key, "language": "en-US", "page": 1}
+        # print(getRequest('https://api.themoviedb.org/3/movie/' + params['id'] + '/similar', queryString).text)
+        return JsonResponse(json.loads(
+            getMovieDetail('https://api.themoviedb.org/3/movie/' + str(params['id']) + '/similar', queryString).text))
+
+
+# def getThriller(request):
+#     return None
